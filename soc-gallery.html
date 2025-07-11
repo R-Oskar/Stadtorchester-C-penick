@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bildergalerie - Stadtorchester Köpenick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fafafa;
+            /* leichtes off-white statt reinweiß */
+            color: #333;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 3rem;
+        }
+
+        h1 {
+            font-weight: 900;
+            margin: 40px 0 40px 0;
+            text-align: center;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #2c3e50;
+            color: #ffa500;
+            border: none;
+            padding: 10px 15px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10000;
+            user-select: none;
+        }
+
+        .back-button:hover:enabled {
+            background-color: #ffa500;
+            color: #2c3e50;
+        }
+
+        .back-button:disabled {
+            opacity: 0.5;
+            cursor: default;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            /* leichter Schatten wie die Bilder */
+            pointer-events: none;
+            background-color: #2c3e50;
+            /* gleiche Farbe wie normal */
+            color: #ffa500;
+            /* gleiche Farbe wie normal */
+            transition: none;
+        }
+
+
+        .back-button:hover:enabled {
+            background-color: #ffa500;
+            color: #2c3e50;
+        }
+
+
+        .gallery {
+            max-width: 960px;
+            margin: 0 auto 60px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Overlay */
+        #lightboxOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #lightboxImage {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            user-select: none;
+        }
+
+        /* Navigation Pfeile */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10001;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background-color: rgba(255, 165, 0, 0.8);
+            color: #2c3e50;
+        }
+
+        #arrowLeft {
+            left: 20px;
+        }
+
+        #arrowRight {
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="back-button" id="backButton" onclick="window.history.back()">← Zurück</button>
+
+    <h1 class="title">Impressionen 2023</h1>
+
+    <div class="gallery">
+        <img src="images/Gallerie/Impressionen2023/pfingskonzert.jpg" alt="Pfingstkonzert"
+            data-full="images/Gallerie/Impressionen2023/pfingskonzert.jpg" />
+        <img src="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" alt="Köpenicker Sommer"
+            data-full="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" />
+        <img src="images/Gallerie/Impressionen2023/freiheit15.jpg" alt="Freiheit 15"
+            data-full="images/Gallerie/Impressionen2023/freiheit15.jpg" />
+        <img src="images/Gallerie/Impressionen2023/wuhlheide.jpg" alt="Wuhlheide"
+            data-full="images/Gallerie/Impressionen2023/wuhlheide.jpg" />
+        <img src="images/Gallerie/Impressionen2023/schöneweide.jpg" alt="Schöneweide"
+            data-full="images/Gallerie/Impressionen2023/schöneweide.jpg" />
+        <img src="images/Gallerie/Impressionen2023/probenlager.jpg" alt="Probenlager"
+            data-full="images/Gallerie/Impressionen2023/probenlager.jpg" />
+        <img src="images/Gallerie.jpg" alt="" data-full="images/Gallerie.jpg" />
+    </div>
+
+    <h1 class="title">Probenwochenende und Weihnachtskonzert 2021</h1>
+    <div class="gallery">
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/threema.jpg" alt="Threema"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/threema.jpg" />
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/bild1.jpeg" alt="Bild1"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/bild1.jpg" />
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/bild2.jpeg" alt="Bild2"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/bild2.jpg" />
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/minituba.jpeg" alt="Minituba"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/minituba.jpeg" />
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/konzert.jpeg" alt="Konzert"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/konzert.jpegg" />
+        <img src="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/konzert2.jpeg" alt="Konzert2"
+            data-full="images/Gallerie/ProbenwochenendeWeihnachtskonzert2021/konzert2.jpegg" />
+    </div>
+    <h1 class="title">Jubiläumskonzert im Rathaus Köpenick 2017</h1>
+    <div class="gallery">
+        <img src="images/Gallerie/Jubiläumskonzert/orchester.JPG" alt="Orchester"
+            data-full="images/Gallerie/Jubiläumskonzert/orchester.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/gang.JPG" alt="Gang"
+            data-full="images/Gallerie/Jubiläumskonzert/gang.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/trompeter.JPG" alt="Trompeter"
+            data-full="images/Gallerie/Jubiläumskonzert/trompeter.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/orchester2.JPG" alt="Orchester2"
+            data-full="images/Gallerie/Jubiläumskonzert/orchester2.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/orchester3.JPG" alt="Orchester3"
+            data-full="images/Gallerie/Jubiläumskonzert/orchester3.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/applaus.JPG" alt="Applaus"
+            data-full="images/Gallerie/Jubiläumskonzert/applaus.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/applaus2.JPG" alt="Applaus2"
+            data-full="images/Gallerie/Jubiläumskonzert/applaus2.jpg" />
+        <img src="images/Gallerie/Jubiläumskonzert/rede.JPG" alt="Rede"
+            data-full="images/Gallerie/Jubiläumskonzert/rede.jpg" />
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightboxOverlay" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Großes Bild" />
+    </div>
+
+    <!-- Navigation Pfeile -->
+    <div id="arrowLeft" class="nav-arrow" onclick="showPrev(event)">&#8592;</div>
+    <div id="arrowRight" class="nav-arrow" onclick="showNext(event)">&#8594;</div>
+
+    <script>
+        const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const backButton = document.getElementById('backButton');
+        const arrowLeft = document.getElementById('arrowLeft');
+        const arrowRight = document.getElementById('arrowRight');
+
+        let currentIndex = 0;
+
+        // Anfangs Pfeile und Lightbox verstecken
+        arrowLeft.style.display = 'none';
+        arrowRight.style.display = 'none';
+
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation(); // Verhindert, dass Overlay sofort geschlossen wird
+                currentIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            const img = galleryImages[currentIndex];
+            const fullSrc = img.getAttribute('data-full');
+            lightboxImage.src = fullSrc;
+            lightboxImage.alt = img.alt;
+            lightboxOverlay.style.display = 'flex';
+
+            // Pfeile anzeigen oder verstecken je nach Index
+            arrowLeft.style.display = currentIndex === 0 ? 'none' : 'block';
+            arrowRight.style.display = currentIndex === galleryImages.length - 1 ? 'none' : 'block';
+
+            // Zurück Button deaktivieren
+            backButton.disabled = true;
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.style.display = 'none';
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+
+            // Pfeile verstecken
+            arrowLeft.style.display = 'none';
+            arrowRight.style.display = 'none';
+
+            // Zurück Button aktivieren
+            backButton.disabled = false;
+        }
+
+        function showPrev(event) {
+            event.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateLightboxImage();
+            }
+        }
+
+        function showNext(event) {
+            event.stopPropagation();
+            if (currentIndex < galleryImages.length - 1) {
+                currentIndex++;
+                updateLightboxImage();
+            }
+        }
+
+        function updateLightboxImage() {
+            const img = galleryImages[currentIndex];
+            lightboxImage.src = img.getAttribute('data-full');
+            lightboxImage.alt = img.alt;
+
+            // Pfeile anpassen
+            arrowLeft.style.display = currentIndex === 0 ? 'none' : 'block';
+            arrowRight.style.display = currentIndex === galleryImages.length - 1 ? 'none' : 'block';
+        }
+
+        // Klick auf Overlay schließt Lightbox
+        lightboxOverlay.addEventListener('click', () => {
+            closeLightbox();
+        });
+
+        // Klick auf Bild in Lightbox soll nicht schließen
+        lightboxImage.addEventListener('click', e => e.stopPropagation());
+
+        // Optional: Pfeiltasten für Navigation (links/rechts)
+        document.addEventListener('keydown', (e) => {
+            if (lightboxOverlay.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') {
+                    showPrev(e);
+                } else if (e.key === 'ArrowRight') {
+                    showNext(e);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
