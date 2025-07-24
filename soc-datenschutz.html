@@ -7,18 +7,28 @@
     <title>Haftungsausschluss & Datenschutzerklärung</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <style>
+        :root {
+            --primary: #ff6600;
+            --accent: #004080;
+            --light-bg: #f9f9f9;
+            --text-color: #333;
+            --link-color: #d35400;
+            --link-hover: #e67e22;
+            --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: var(--font-main);
+            line-height: 1.7;
+            background-color: var(--light-bg);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
 
         header,
         footer {
-            background-color: #004080;
+            background-color: var(--accent);
             color: white;
             padding: 1rem 2rem;
             text-align: center;
@@ -26,79 +36,111 @@
 
         header h1 {
             margin: 0;
-            font-weight: 700;
             font-size: 1.8rem;
+            font-weight: 700;
         }
 
-        nav {
-            margin-top: 0.5rem;
-        }
-
-        nav a {
-            color: #ffc107;
+        header a {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
             text-decoration: none;
-            margin: 0 1rem;
             font-weight: 600;
-            transition: color 0.3s ease;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
 
-        nav a:hover {
-            color: #ffca2c;
-            text-decoration: underline;
+        header a:hover {
+            background-color: #ff8533;
         }
 
         main {
             max-width: 900px;
-            margin: 2rem auto 4rem auto;
+            margin: 2rem auto 3rem auto;
             background: white;
-            padding: 2rem 3rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h2,
-        h3,
-        h4 {
-            color: #004080;
+            padding: 2rem 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
-            border-bottom: 2px solid #004080;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-top: 1.5rem;
         }
 
         p {
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
 
         a {
-            color: #d35400;
+            color: var(--link-color);
             text-decoration: underline;
+            transition: color 0.3s ease;
+            word-wrap: break-word;
+            /* alte, aber gut unterstützte Eigenschaft */
+            overflow-wrap: break-word;
+            /* moderner Standard */
+            word-break: break-word;
+            /* umbricht auch mitten in Wörtern bei Bedarf */
         }
 
         a:hover {
-            color: #e67e22;
+            color: var(--link-hover);
         }
 
         footer p {
             font-size: 0.9rem;
-            margin: 0;
+            margin: 0.5rem 0 0 0;
         }
 
         /* Responsive */
+        /* Bereits drin: */
         @media (max-width: 600px) {
             main {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1.2rem;
                 margin: 1rem;
+                max-width: 100%;
+                /* Volle Breite nutzen */
             }
 
-            nav a {
-                margin: 0 0.5rem;
+            header {
+                padding: 1rem 1rem;
+                /* weniger horizontal */
+            }
+
+            header h1 {
+                font-size: 1.4rem;
+            }
+
+            header a {
                 font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+                display: block;
+                /* Button nimmt volle Breite */
+                max-width: 180px;
+                /* max. Breite */
+                margin: 10px auto 0;
+                /* zentriert und Abstand nach oben */
+            }
+
+            p {
+                font-size: 0.95rem;
+                /* etwas kleinere Schrift auf kleineren Geräten */
             }
         }
     </style>
+
 </head>
 
 <body>

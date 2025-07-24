@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Stadtorchester Köpenick</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -25,15 +26,20 @@
 </head>
 
 <body class="bg-gray-100 text-gray-800">
-    <!-- Zentrierte große Navigation -->
-    <nav class="absolute top-6 left-1/2 transform -translate-x-1/2 z-50">
-        <ul class="flex space-x-6 text-white text-4xl font-semibold">
-            <li><a href="#start" class="hover:text-yellow-300 transition">Start</a></li>
-            <li>·</li>
-            <li><a href="#orchester" class="hover:text-yellow-300 transition">Orchester</a></li>
-            <li>·</li>
-            <li><a href="#contact" class="hover:text-yellow-300 transition">Conatct</a></li>
+    <!-- Navigation (zentriert, mobil angepasst) -->
+    <nav class="absolute top-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+        <ul class="flex justify-center items-center text-white font-semibold gap-x-4 flex-nowrap">
+            <li class="flex-shrink-0"><a href="#" data-target="start"
+                    class="nav-link hover:text-yellow-300 transition text-base sm:text-xl md:text-2xl">Start</a></li>
+            <li class="flex-shrink-0 text-xl">·</li>
+            <li class="flex-shrink-0"><a href="#" data-target="orchester"
+                    class="nav-link hover:text-yellow-300 transition text-base sm:text-xl md:text-2xl">Orchester</a>
+            </li>
+            <li class="flex-shrink-0 text-xl">·</li>
+            <li class="flex-shrink-0"><a href="#" data-target="contact"
+                    class="nav-link hover:text-yellow-300 transition text-base sm:text-xl md:text-2xl">Contact</a></li>
         </ul>
+
     </nav>
 
 
@@ -41,18 +47,17 @@
     <header class="h-screen bg-cover bg-center relative" style="background-image: url('images/homeImage.jpg');">
         <div
             class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                <a href="#start" class="hover:text-yellow-300 transition" style="text-decoration: none;">S</a>tadt<a
-                    href="#orchester" class="hover:text-yellow-300 transition"
-                    style="text-decoration: none;">o</a>rchester <a href="#contact"
-                    class="hover:text-yellow-300 transition" style="text-decoration: none;">C</a>öpenick
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-6">
+                <a href="#start" class="hover:text-yellow-300 transition no-underline">S</a>tadt<a href="#orchester"
+                    class="hover:text-yellow-300 transition no-underline">o</a>rchester <a href="#contact"
+                    class="hover:text-yellow-300 transition no-underline">C</a>öpenick
             </h1>
+            <p class="text-lg md:text-2xl">Musik aus Leidenschaft – in Berlin Cöpenick</p>
 
-
-            <p class="text-xl md:text-2xl">Musik aus Leidenschaft – in Berlin Cöpenick</p>
+            <!-- Facebook Icon -->
             <a href="https://www.facebook.com/stadtorchesterCoepenick/" target="_blank" rel="noopener"
-                style="position: absolute; bottom: 20px; right: 20px; color: white; font-size: 32px; text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32"
+                class="absolute bottom-4 right-4 text-white text-2xl opacity-80 hover:opacity-100 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="32" height="32" viewBox="0 0 24 24"
                     aria-label="Facebook">
                     <path
                         d="M22 12a10 10 0 1 0-11.5 9.87v-6.99H8v-2.88h2.5V9.34c0-2.48 1.49-3.86 3.78-3.86 1.1 0 2.25.2 2.25.2v2.47H15c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.88h-2.34v6.99A10 10 0 0 0 22 12z" />
@@ -61,47 +66,37 @@
         </div>
     </header>
 
-    <section id="start" style="
-  padding: 40px; 
-  max-width: 1200px; 
-  margin: 0 auto; 
-  background-color: #fff; 
-  border: 1px solid #eee; 
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
-  border-radius: 8px;
-">
+    <!-- Hauptbereich -->
+    <section id="start" class="p-4 sm:p-8 max-w-screen-xl mx-auto bg-white border border-gray-200 shadow-sm rounded-lg">
+        <h1 class="text-center text-2xl sm:text-3xl font-semibold mb-10">Was momentan so los ist...</h1>
 
-
-        <h1 style="text-align: center; margin-bottom: 40px;">Was momentan so los ist...</h1>
-
-        <div style="display: flex; gap: 40px;">
-
-            <!-- Erste Spalte -->
-            <div style="flex: 1;">
-                <h2 class="bold">Termine</h2>
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Spalte 1 -->
+            <div class="flex-1">
+                <h2 class="font-bold text-xl mb-2">Termine</h2>
                 <p>- Sonntag, 15.09.24: Tag des Plänterwaldes</p>
-                <ul>
+                <ul class="list-disc ml-4 mb-4">
                     <li>Ort: Waldschule Plänterwald (Dammweg 1B, 12437 Berlin)</li>
                     <li>Konzertbeginn: 14:30 Uhr</li>
                     <li>Konzertende: ca. 15:30 Uhr</li>
                 </ul>
                 <p>- Samstag, 28.09.24: Berliner Orchestertreff</p>
-                <ul>
+                <ul class="list-disc ml-4 mb-4">
                     <li>Ort: FEZ Berlin</li>
                     <li>Konzertbeginn: 17:45 Uhr</li>
                     <li>Konzertende: ca. 18:15 Uhr</li>
                 </ul>
                 <p>- Sonntag, 08.12.24: Weihnachtskonzert</p>
-                <ul>
+                <ul class="list-disc ml-4">
                     <li>Ort: EFG Lichtenberg, Heinrichstraße</li>
                     <li>Konzertbeginn: 17:00 Uhr</li>
                     <li>Konzertende: ca. 19:00 Uhr</li>
                 </ul>
             </div>
 
-            <!-- Zweite Spalte -->
-            <div style="flex: 1;">
-                <h2 class="bold">Die Chronik des Jahres in Kurzfassung</h2>
+            <!-- Spalte 2 -->
+            <div class="flex-1">
+                <h2 class="font-bold text-xl mb-2">Die Chronik des Jahres in Kurzfassung</h2>
                 <p>Das Jahr 2023 war für uns ereignisreich mit zahlreichen Auftritten. So u.a. das Pfingstkonzert beim
                     „Wassersportverein 1921“, das Eröffnungskonzert des Köpenicker Sommers, Auftritte beim
                     Musikschulfest,
@@ -113,169 +108,122 @@
                     Nachwuchsorchesters erfreulich verstärkt und verjüngt.</p>
             </div>
 
-            <!-- Dritte Spalte -->
-            <div style="flex: 1;">
-                <h2 class="bold">Das Stadtorchester live beim Köpenicker Sommer 2022!</h2>
+            <!-- Spalte 3 -->
+            <div class="flex-1">
+                <h2 class="font-bold text-xl mb-2">Das Stadtorchester live beim Köpenicker Sommer 2022!</h2>
                 <p>Nach einer gefühlt unendlich langen Pause sind wir endlich wieder live bei der Eröffnung des
                     Köpenicker Sommers auf der Bühne zu sehen und zu hören.</p>
-                <p>Wann: Fr. 17.06.2022, 17.00 -18.00</p>
-                <p>Wo: Schlossinsel Köpenick</p>
-                <p>Wir freuen uns auf unser Publikum</p>
+                <p><strong>Wann:</strong> Fr. 17.06.2022, 17.00 -18.00</p>
+                <p><strong>Wo:</strong> Schlossinsel Köpenick</p>
                 <p>Schon am Sonntag, 19.06.2022 spielen wir erneut beim Musikschulfest im Garten der Freiheit 15 von
                     13.30 - 13.50 Uhr</p>
             </div>
-
         </div>
-        <div id="readMoreContent" style="display: none; margin-top: 40px;">
-            <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 20px;">
 
-                <!-- Linke Spalte -->
-                <div style="flex: 1; min-width: 300px;">
-                    <h3 class="bold">Weihnachten 2022 mit dem SOC</h3>
+        <!-- Weiterlesen -->
+        <div id="readMoreContent" class="hidden mt-10 space-y-10">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 min-w-[300px]">
+                    <h3 class="font-bold text-lg mb-2">Weihnachten 2022 mit dem SOC</h3>
                     <p>
                         Dieses Jahr sind wir wieder mit einem weihnachtlichen Programm <strong>live und im
                             Stream</strong> zu hören!
-                    </p>
-                    <p>
-                        👉 <a href="https://youtube.com/channel/UCNHcFrYACKMx0GEixBegx8Q" target="_blank"
-                            style="color: orange; text-decoration: underline;">
-                            YouTube-Kanal des SOC
-                        </a>
+                        <br>
+                        📺 <a href="#" class="text-orange-500 underline">YouTube-Kanal des SOC</a>
                     </p>
                     <img src="images/Lichtenberg2022.jpg" alt="Weihnachtskonzert 2022"
-                        style="width: 100%; border-radius: 8px; max-width: 400px; margin-bottom: 15px; margin-top: 10px;">
+                        class="rounded-lg w-full max-w-md mt-4">
                 </div>
-
-                <!-- Rechte Spalte mit zwei Abschnitten -->
-                <div style="flex: 1; min-width: 300px;">
-                    <!-- Abschnitt 1 -->
-                    <div style="margin-bottom: 30px;">
-                        <h3 class="bold">Online-Konzert</h3>
-                        <p>Hallo Ihr Lieben!</p>
-                        <p>
-                            Wir können aus Corona-Gründen leider kein Nikolauskonzert vor Publikum spielen. Aber es wird
+                <div class="flex-1 min-w-[300px] space-y-8">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Online-Konzert</h3>
+                        <p>Wir können aus Corona-Gründen leider kein Nikolauskonzert vor Publikum spielen. Aber es wird
                             wieder ein
                             <strong>Online-Konzert</strong> geben!
                         </p>
                         <p>
-                            📺 <a href="https://youtu.be/WZx8Ju6RmNE" target="_blank"
-                                style="color: orange; text-decoration: underline;">
+                            👉 <a href="https://youtu.be/WZx8Ju6RmNE" target="_blank" class="text-orange-500 underline">
                                 Konzert ansehen
-                            </a>
+                            </a><br>
+                            Am 5. Dezember um 17 Uhr geht es los.<br>
+                            Euer SOC!
                         </p>
-                        <p>
-                            🕔 Am <strong>5. Dezember</strong> um <strong>17:00 Uhr</strong> geht’s los!
-                        </p>
-                        <p>Euer SOC!</p>
-                    </div>
 
-                    <!-- Abschnitt 2 -->
+
+                    </div>
                     <div>
-                        <h4 class="bold">Wir sind FÜNFZIG!</h4>
-                        <p>
-                            Mit einem Festkonzert haben wir unser 50jähriges Jubiläum 2017 im Saal des Rathauses
+                        <h4 class="font-bold text-lg mb-2">Wir sind FÜNFZIG!</h4>
+                        <p>Mit einem Festkonzert haben wir unser 50jähriges Jubiläum 2017 im Saal des Rathauses
                             Köpenick gefeiert. Wir haben Ehrengäste wie den Stadtrat, die Amtsleiterin, die
                             Musikschulleitung und auch vom Blasmusikverband begrüßen dürfen. Auch ehemalige
                             Orchestermitglieder, die uns in der Zeit begleitet haben, waren da.
                             <br>
                             Das war ein tolles Konzert mit Solisten und festlicher Stimmung. Schön dass Ihr da wart!
                         </p>
-                        <img src="images/SOC50.png" alt="Weihnachtskonzert 2022"
-                            style="width: 100%; border-radius: 8px; max-width: 300px; margin-bottom: 15px; margin-top: 10px;">
+                        <img src="images/SOC50.png" alt="SOC Jubiläum" class="rounded-lg w-full max-w-xs mt-4">
                     </div>
                 </div>
-
             </div>
         </div>
 
-
-
-
-        <!-- "Weiterlesen"-Button ganz am Ende -->
-        <p id="weiterlesen-container" style="text-align: center; margin-top: 40px;">
+        <p id="weiterlesen-container" class="text-center mt-10">
             <a href="javascript:void(0);" onclick="toggleReadMore()" id="toggleButton"
-                style="color: orange; text-decoration: underline; cursor: pointer;">Weiterlesen...</a>
+                class="text-orange-500 underline cursor-pointer">Weiterlesen...</a>
         </p>
-
     </section>
 
-    <!-- JavaScript für Ein-/Ausklappen und Scroll -->
+    <!-- JavaScript bleibt gleich -->
     <script>
         function toggleReadMore() {
             const content = document.getElementById("readMoreContent");
             const button = document.getElementById("toggleButton");
 
-            const isHidden = content.style.display === "none";
+            const isHidden = content.classList.contains("hidden");
 
-            content.style.display = isHidden ? "block" : "none";
+            content.classList.toggle("hidden", !isHidden);
             button.textContent = isHidden ? "Weniger anzeigen..." : "Weiterlesen...";
         }
     </script>
 
-
     </section>
 
     <section id="orchester"
-        style="background-color: #f9f9f9; padding: 40px; max-width: 960px; margin: 60px auto; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); font-family: Arial, sans-serif; color: #333;">
+        class="bg-gray-100 p-4 sm:p-8 max-w-screen-xl mx-auto rounded-lg shadow text-gray-800 font-sans">
+        <h1 class="bold mb-8 text-center text-2xl sm:text-3xl font-bold">Unser Orchesterleben</h1>
 
-        <h1 class="bold" style=" margin-bottom: 30px; font-weight: 700; text-align: center; font-size:2rem;">Unser
-            Orchesterleben</h1>
-
-        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-
-            <!-- Textblock -->
-            <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
-
-                <!-- Textblock -->
-                <div style="flex: 1 1 300px; min-width: 280px;">
-                    <h2 style="font-weight: 600; margin-bottom: 10px; color: #2c3e50;">Wir suchen Mitspieler!</h2>
-                    <p>Du spielst ein Instrument und möchtest in einem engagierten Orchester mitmachen? Dann komm zu
-                        unseren
-                        Proben, jeden Mittwoch von 18:00 bis 20:30 Uhr.</p>
-                    <p>Wir freuen uns auf dich!</p>
-                </div>
-
-            </div>
-
-            <!-- Überschrift und Bilder kommen jetzt darunter -->
-            <h2
-                style="font-weight: 600; margin-top: 10px; margin-bottom: 15px; color: #2c3e50; text-align: center; font-size: 25px;">
-                Impressionen 2023
-            </h2>
-
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-
-                <div style="flex: 1 1 280px; min-width: 280px; text-align: center;">
-                    <a href="images/Gallerie/pfingskonzert.jpg" target="_blank" rel="noopener noreferrer">
-                        <img src="images/Gallerie/Impressionen2023/pfingskonzert.jpg" alt="Impression 2023"
-                            style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer;">
-                    </a>
-                </div>
-
-                <div style="flex: 1 1 280px; min-width: 280px; text-align: center;">
-                    <a href="images/Gallerie/köpenickerSommer.jpg" target="_blank" rel="noopener noreferrer">
-                        <img src="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" alt="Impression 2023"
-                            style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer;">
-                    </a>
-                </div>
-
-               <div style="flex: 1 1 280px; min-width: 280px; text-align: center;">
-                    <a href="images/Gallerie/köpenickerSommer.jpg" target="_blank" rel="noopener noreferrer">
-                        <img src="images/Gallerie/Impressionen2023/freiheit15.jpg" alt="Impression 2023"
-                            style="max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer;">
-                    </a>
-                </div>
-
-            </div>
-
+        <div class="mb-10 text-center max-w-3xl mx-auto">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Wir suchen Mitspieler!</h2>
+            <p>Du spielst ein Instrument und möchtest in einem engagierten Orchester mitmachen? Dann komm zu unseren
+                Proben, jeden Mittwoch von 18:00 bis 20:30 Uhr.</p>
+            <p>Wir freuen uns auf dich!</p>
         </div>
 
-        <p style="text-align: center; margin-top: 30px;">
-            <a href="soc-gallery.html" style="color: orange; text-decoration: underline; cursor: pointer;">Mehr
+        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Impressionen 2023</h2>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="images/Gallerie/Impressionen2023/pfingskonzert.jpg" target="_blank" rel="noopener noreferrer"
+                class="w-full max-w-xs">
+                <img src="images/Gallerie/Impressionen2023/pfingskonzert.jpg" alt="Pfingstkonzert 2023"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
+            </a>
+            <a href="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" target="_blank" rel="noopener noreferrer"
+                class="w-full max-w-xs">
+                <img src="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" alt="Köpenicker Sommer 2023"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
+            </a>
+            <a href="images/Gallerie/Impressionen2023/freiheit15.jpg" target="_blank" rel="noopener noreferrer"
+                class="w-full max-w-xs">
+                <img src="images/Gallerie/Impressionen2023/freiheit15.jpg" alt="Freiheit 15 Auftritt 2023"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
+            </a>
+        </div>
+
+        <p class="text-center mt-8">
+            <a href="soc-gallery.html" class="text-orange-500 underline hover:text-orange-600 transition">Mehr
                 Bilder...</a>
         </p>
-
     </section>
+
 
     <section id="contact"
         style="background-color: #f9f9f9; padding: 40px; border-radius: 10px; max-width: 960px; margin: 0 auto; font-family: Arial, sans-serif; color: #333;">
@@ -353,6 +301,19 @@
         <a href="soc-datenschutz.html" class="underline">Datenschutz</a> |
         <a href="soc-datenschutz.html" class="underline">Haftungsausschluss</a>
     </footer>
+
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default jump and hash change
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 
 </body>
 
