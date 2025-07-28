@@ -25,6 +25,7 @@
     </style>
 </head>
 
+
 <body class="bg-gray-100 text-gray-800">
     <!-- Navigation (zentriert, mobil angepasst) -->
     <nav class="absolute top-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
@@ -42,16 +43,18 @@
 
     </nav>
 
-
     <!-- Hero -->
     <header class="h-screen bg-cover bg-center relative" style="background-image: url('images/homeImage.jpg');">
         <div
             class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-white text-center px-4">
             <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-6">
-                <a href="#start" class="hover:text-yellow-300 transition no-underline">S</a>tadt<a href="#orchester"
-                    class="hover:text-yellow-300 transition no-underline">o</a>rchester <a href="#contact"
-                    class="hover:text-yellow-300 transition no-underline">C</a>öpenick
+                <a href="#" data-target="start"
+                    class="nav-link hover:text-yellow-300 transition no-underline">S</a>tadt<a href="#"
+                    data-target="orchester" class="nav-link hover:text-yellow-300 transition no-underline">o</a>rchester
+                <a href="#" data-target="contact"
+                    class="nav-link hover:text-yellow-300 transition no-underline">C</a>öpenick
             </h1>
+
             <p class="text-lg md:text-2xl">Musik aus Leidenschaft – in Berlin Cöpenick</p>
 
             <!-- Facebook Icon -->
@@ -201,21 +204,21 @@
         <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Impressionen 2023</h2>
 
         <div class="flex flex-wrap justify-center gap-6">
-            <a href="images/Gallerie/Impressionen2023/pfingskonzert.jpg" target="_blank" rel="noopener noreferrer"
-                class="w-full max-w-xs">
+            <div class="w-full max-w-xs">
                 <img src="images/Gallerie/Impressionen2023/pfingskonzert.jpg" alt="Pfingstkonzert 2023"
-                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
-            </a>
-            <a href="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" target="_blank" rel="noopener noreferrer"
-                class="w-full max-w-xs">
+                    data-full="images/Gallerie/Impressionen2023/pfingskonzert.jpg"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full preview-image">
+            </div>
+            <div class="w-full max-w-xs">
                 <img src="images/Gallerie/Impressionen2023/köpenickerSommer.jpg" alt="Köpenicker Sommer 2023"
-                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
-            </a>
-            <a href="images/Gallerie/Impressionen2023/freiheit15.jpg" target="_blank" rel="noopener noreferrer"
-                class="w-full max-w-xs">
+                    data-full="images/Gallerie/Impressionen2023/köpenickerSommer.jpg"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full preview-image">
+            </div>
+            <div class="w-full max-w-xs">
                 <img src="images/Gallerie/Impressionen2023/freiheit15.jpg" alt="Freiheit 15 Auftritt 2023"
-                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full">
-            </a>
+                    data-full="images/Gallerie/Impressionen2023/freiheit15.jpg"
+                    class="rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer w-full preview-image">
+            </div>
         </div>
 
         <p class="text-center mt-8">
@@ -312,6 +315,98 @@
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+    </script>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightboxOverlay" onclick="closeLightbox()"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:9999;">
+        <img id="lightboxImage" src="" alt="Großes Bild"
+            style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 0 25px rgba(255,255,255,0.6); user-select:none; cursor:zoom-in; transition:transform 0.3s ease;">
+    </div>
+
+    <!-- Navigation Pfeile -->
+    <div id="arrowLeft" class="nav-arrow"
+        style="display:none; position:fixed; top:50%; left:20px; transform:translateY(-50%); font-size:2rem; color:white; background-color:rgba(0,0,0,0.4); padding:10px 15px; border-radius:50%; cursor:pointer; z-index:10001;">
+        &#8592;</div>
+    <div id="arrowRight" class="nav-arrow"
+        style="display:none; position:fixed; top:50%; right:20px; transform:translateY(-50%); font-size:2rem; color:white; background-color:rgba(0,0,0,0.4); padding:10px 15px; border-radius:50%; cursor:pointer; z-index:10001;">
+        &#8594;</div>
+
+    <script>
+        const previewImages = Array.from(document.querySelectorAll('#orchester .flex-wrap img'));
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const arrowLeft = document.getElementById('arrowLeft');
+        const arrowRight = document.getElementById('arrowRight');
+
+        let currentIndex = 0;
+
+        previewImages.forEach((img, index) => {
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            const img = previewImages[currentIndex];
+            lightboxImage.src = img.getAttribute('data-full');
+            lightboxOverlay.style.display = 'flex';
+            updateArrows();
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.style.display = 'none';
+            lightboxImage.src = '';
+            arrowLeft.style.display = 'none';
+            arrowRight.style.display = 'none';
+        }
+
+        function updateLightboxImage() {
+            const img = previewImages[currentIndex];
+            lightboxImage.src = img.getAttribute('data-full');
+            updateArrows();
+        }
+
+        function updateArrows() {
+            arrowLeft.style.display = currentIndex > 0 ? 'block' : 'none';
+            arrowRight.style.display = currentIndex < previewImages.length - 1 ? 'block' : 'none';
+        }
+
+        function showPrev(event) {
+            event.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateLightboxImage();
+            }
+        }
+
+        function showNext(event) {
+            event.stopPropagation();
+            if (currentIndex < previewImages.length - 1) {
+                currentIndex++;
+                updateLightboxImage();
+            }
+        }
+
+        arrowLeft.addEventListener('click', showPrev);
+        arrowRight.addEventListener('click', showNext);
+
+        lightboxImage.addEventListener('click', e => {
+            e.stopPropagation();
+            lightboxOverlay.classList.toggle('zoomed');
+            lightboxImage.style.transform = lightboxOverlay.classList.contains('zoomed') ? 'scale(2)' : 'scale(1)';
+            lightboxImage.style.cursor = lightboxOverlay.classList.contains('zoomed') ? 'zoom-out' : 'zoom-in';
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightboxOverlay.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') showPrev(e);
+                else if (e.key === 'ArrowRight') showNext(e);
+                else if (e.key === 'Escape') closeLightbox();
+            }
         });
     </script>
 
