@@ -104,6 +104,28 @@
             margin: 0.5rem 0 0 0;
         }
 
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #2c3e50;
+            color: #ffa500;
+            border: none;
+            padding: 10px 15px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            z-index: 10000;
+            user-select: none;
+        }
+
+        .back-button:hover {
+            background-color: #ffa500;
+            color: #2c3e50;
+        }
+
         /* Responsive */
         /* Bereits drin: */
         @media (max-width: 600px) {
@@ -146,19 +168,7 @@
 <body>
     <header style="padding: 1rem;">
         <h1>Haftungsausschluss & Datenschutzerklärung</h1>
-        <a href="soc-home.html" style="
-       display: inline-block;
-       background-color: #ff6600; 
-       color: white; 
-       padding: 0.5rem 1rem; 
-       border-radius: 4px; 
-       text-decoration: none; 
-       font-weight: bold;
-       font-size: 1rem;
-       margin-top: 10px;;
-       ">
-            ← Zurück
-        </a>
+        <button class="back-button" id="backButton" onclick="window.history.back()">← Zurück</button>
     </header>
 
     <main>
